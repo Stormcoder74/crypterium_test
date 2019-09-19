@@ -3,7 +3,7 @@ POST http://localhost:8080/book/add
 Content-Type: application/json
 
 {
-  "title":"Собачье сердце",
+  "title":"Мастер и Маргарита",
   "author":
   {
     "id":1,

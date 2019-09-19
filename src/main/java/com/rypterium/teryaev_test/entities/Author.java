@@ -1,6 +1,7 @@
 package com.rypterium.teryaev_test.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,6 +13,7 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+//    @UniqueElements
     private String name;
 
     @JsonIgnore

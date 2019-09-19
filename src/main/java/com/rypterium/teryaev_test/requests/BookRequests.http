@@ -1,0 +1,31 @@
+### add new book
+POST http://localhost:8080/book/add
+Content-Type: application/json
+
+{
+  "title":"Три товарища",
+  "author":
+  {
+    "id":1,
+    "name":"Эрих Мария Ремарк"
+  }
+}
+
+### update book
+POST http://localhost:8080/book/add
+Content-Type: application/json
+
+{
+  "id":1,
+  "title":"Собачье сердце",
+  "author":
+  {
+    "id":1,
+    "name":"Михаил Афанасьевич Булгаков"
+  }
+}
+
+### update book
+GET http://localhost:8080/book/Мастер и Маргарита
+
+###

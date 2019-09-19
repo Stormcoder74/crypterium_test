@@ -2,6 +2,8 @@ package com.rypterium.teryaev_test.controllers;
 
 import com.rypterium.teryaev_test.entities.Book;
 import com.rypterium.teryaev_test.services.BookService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,22 +16,38 @@ public class BookController {
     }
 
     @PostMapping("/add")
-    public void add(@RequestBody Book book){
-        bookService.add(book);
+    public ResponseEntity add(@RequestBody Book book){
+        if (bookService.add(book)) {
+            return new ResponseEntity<>(null, HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping("{title}")
-    public Book get(@PathVariable String title){
-        return bookService.get(title);
+    public ResponseEntity get(@PathVariable String title){
+        Book book = bookService.get(title);
+        if (book == null){
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(book, HttpStatus.OK);
     }
 
     @PostMapping("/update")
-    public void update(@RequestBody Book book){
-        bookService.update(book);
+    public ResponseEntity update(@RequestBody Book book){
+        if (bookService.update(book)) {
+            return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
-    @PostMapping("/remove")
-    public void remove(@RequestBody Book book){
-        bookService.remove(book);
+    @DeleteMapping("/remove")
+    public ResponseEntity remove(@RequestBody Book book){
+        if (bookService.remove(book)) {
+            return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 }

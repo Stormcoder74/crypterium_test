@@ -2,7 +2,10 @@ package com.rypterium.teryaev_test.services;
 
 import com.rypterium.teryaev_test.entities.Book;
 import com.rypterium.teryaev_test.repositories.BookRepository;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+
+import java.sql.SQLException;
 
 @Service
 public class BookService {
@@ -12,24 +15,37 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
-    public void add(Book book){
+    public boolean add(Book book){
         if (book.getId() == null) {
-            bookRepository.save(book);
+            try {
+                bookRepository.save(book);
+                return true;
+            } catch (DataIntegrityViolationException e) {
+                return false;
+            }
         }
+        return false;
     }
 
     public Book get(String title){
-        Book book = bookRepository.findByTitle(title);
-        return book;
+        return bookRepository.findByTitle(title);
     }
 
-    public void update(Book book){
-        if (book.getId() != null) {
+    public boolean update(Book book){
+        Book savedBook = bookRepository.findById(book.getId()).orElse(null);
+        if (savedBook != null) {
             bookRepository.save(book);
+            return true;
         }
+        return false;
     }
 
-    public void remove(Book book){
-        bookRepository.delete(book);
+    public boolean remove(Book book){
+        Book savedBook = bookRepository.findById(book.getId()).orElse(null);
+        if (savedBook != null) {
+            bookRepository.delete(book);
+            return true;
+        }
+        return false;
     }
 }

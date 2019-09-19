@@ -1,7 +1,7 @@
-package com.rypterium.teryaev_test.services;
+package com.crypterium.teryaev_test.services;
 
-import com.rypterium.teryaev_test.entities.Author;
-import com.rypterium.teryaev_test.repositories.AuthorRepository;
+import com.crypterium.teryaev_test.entities.Author;
+import com.crypterium.teryaev_test.repositories.AuthorRepository;
 import org.springframework.stereotype.Service;
 
 @Service

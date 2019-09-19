@@ -1,7 +1,7 @@
-package com.rypterium.teryaev_test.controllers;
+package com.crypterium.teryaev_test.controllers;
 
-import com.rypterium.teryaev_test.entities.Author;
-import com.rypterium.teryaev_test.services.AuthorService;
+import com.crypterium.teryaev_test.entities.Author;
+import com.crypterium.teryaev_test.services.AuthorService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

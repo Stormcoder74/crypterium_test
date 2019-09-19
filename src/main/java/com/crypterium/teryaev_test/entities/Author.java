@@ -1,7 +1,6 @@
-package com.rypterium.teryaev_test.entities;
+package com.crypterium.teryaev_test.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.rypterium.teryaev_test.entities;
+package com.crypterium.teryaev_test.entities;
 
 import javax.persistence.*;
 

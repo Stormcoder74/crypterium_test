@@ -1,6 +1,6 @@
-package com.rypterium.teryaev_test.repositories;
+package com.crypterium.teryaev_test.repositories;
 
-import com.rypterium.teryaev_test.entities.Author;
+import com.crypterium.teryaev_test.entities.Author;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

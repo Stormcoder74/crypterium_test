@@ -1,11 +1,9 @@
-package com.rypterium.teryaev_test.services;
+package com.crypterium.teryaev_test.services;
 
-import com.rypterium.teryaev_test.entities.Book;
-import com.rypterium.teryaev_test.repositories.BookRepository;
+import com.crypterium.teryaev_test.entities.Book;
+import com.crypterium.teryaev_test.repositories.BookRepository;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
-
-import java.sql.SQLException;
 
 @Service
 public class BookService {

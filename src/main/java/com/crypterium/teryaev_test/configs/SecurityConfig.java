@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -28,27 +27,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        http.authorizeRequests()
-//                .antMatchers("/products/show/**").hasAnyRole("ADMIN")
-//                .anyRequest().permitAll()
-//                .and()
-//                .formLogin()
-////                .loginPage("/login")
-////                .loginProcessingUrl("/authenticateTheUser")
-//                .permitAll();
-
         http.httpBasic()
                 .and()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/book/*").hasRole("USER")
-                .antMatchers(HttpMethod.POST, "/book/add").hasRole("ADMIN")
-                .antMatchers(HttpMethod.POST, "/book/update").hasRole("ADMIN")
-//                .antMatchers(HttpMethod.PUT, "/books/**").hasRole("ADMIN")
-//                .antMatchers(HttpMethod.PATCH, "/books/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, "/book/add", "/book/update", "/author/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/book/remove").hasRole("ADMIN")
                 .and()
                 .csrf().disable()
                 .formLogin().disable();
     }
 }
-

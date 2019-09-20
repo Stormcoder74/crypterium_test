@@ -6,16 +6,18 @@ Content-Type: application/json
   "name":"Михаил Афанасьевич Булгаков"
 }
 
-###
+### add new author with auth as USER
 POST http://localhost:8080/author/add
+Authorization: Basic user2 123
 Content-Type: application/json
 
 {
 "name":"Оскар Уайльд"
 }
 
-###
+### add new author with auth as ADMIN
 POST http://localhost:8080/author/add
+Authorization: Basic user1 123
 Content-Type: application/json
 
 {

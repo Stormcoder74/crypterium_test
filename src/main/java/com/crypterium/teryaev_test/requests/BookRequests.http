@@ -24,18 +24,52 @@ Content-Type: application/json
   }
 }
 
-### get book
-GET http://localhost:8080/book/Мастер и Маргарита
-
-### get book not found
-GET http://localhost:8080/book/Мастер и ...
-
-### update book
-POST http://localhost:8080/book/update
+### add new book with auth as ADMIN
+POST http://localhost:8080/book/add
+Authorization: Basic user1 123
 Content-Type: application/json
 
 {
-  "id":1,
+  "title":"Собачье сердце",
+  "author":
+  {
+    "id":1,
+    "name":"Михаил Афанасьевич Булгаков"
+  }
+}
+
+### add new book with auth as USER
+POST http://localhost:8080/book/add
+Authorization: Basic user2 123
+Content-Type: application/json
+
+{
+  "title":"Собачье сердце",
+  "author":
+  {
+    "id":1,
+    "name":"Михаил Афанасьевич Булгаков"
+  }
+}
+
+### get book
+GET http://localhost:8080/book/Мастер и Маргарита
+
+### get book with auth
+GET http://localhost:8080/book/Мастер и Маргарита
+Authorization: Basic user1 123
+
+### get book not found
+GET http://localhost:8080/book/Мастер и ...
+Authorization: Basic user1 123
+
+### update book
+POST http://localhost:8080/book/update
+Authorization: Basic user1 123
+Content-Type: application/json
+
+{
+  "id":2,
   "title":"Театральный роман",
   "author":
   {
@@ -44,8 +78,9 @@ Content-Type: application/json
   }
 }
 
-### update book
+### update book not found
 POST http://localhost:8080/book/update
+Authorization: Basic user1 123
 Content-Type: application/json
 
 {

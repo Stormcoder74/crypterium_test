@@ -5,12 +5,21 @@ Content-Type: application/json
 {
   "name":"Михаил Афанасьевич Булгаков"
 }
+
 ###
 POST http://localhost:8080/author/add
 Content-Type: application/json
 
 {
 "name":"Оскар Уайльд"
+}
+
+###
+POST http://localhost:8080/author/add
+Content-Type: application/json
+
+{
+  "name":"Александр Сергеевич Пушкин"
 }
 
 ###
